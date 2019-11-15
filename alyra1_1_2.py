@@ -6,6 +6,7 @@ def search(bounds):
 	return round(reduce((lambda x,y : x+y), bounds)/2)
 
 def compare(solution, attempt, bounds):
+	print("Ma proposition est {}".format(attempt))
 	if solution-attempt>0:
 		return {
 			"found" : False,
