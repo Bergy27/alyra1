@@ -29,16 +29,17 @@ q = int(sys.argv[2])
 
 if isPrime(p) and isPrime(q):
 	n = p*q
+	print("n : "+str(n))
 	indicatrice_euler = (p-1)*(q-1)
-	print("indicatrice_euler "+str(indicatrice_euler))
+	print("indicatrice_euler : "+str(indicatrice_euler))
 
 	list_of_primes = getPrimes(indicatrice_euler)
 	c = random.choice(list_of_primes)
-	print("c "+str(c))
+	print("c : "+str(c))
 
 	(_, d, k) = egcd(c, indicatrice_euler)
-	print("d "+str(d))
-	print("k "+str(k))
+	print("d : "+str(d))
+	print("k : "+str(k))
 
-	print((c*d)%indicatrice_euler)
-	print(c*d+k*indicatrice_euler)
+	print("cd mod(indicatrice_euler) : "+str((c*d)%indicatrice_euler))
+	print("cd + k(indicatrice_euler) : "+str(c*d+k*indicatrice_euler))
