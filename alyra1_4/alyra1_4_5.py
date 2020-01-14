@@ -1,7 +1,7 @@
 #python3 alyra1_4_5.py "12" "4" "-" "2" "*" --> 16 (ok)
 #python3 alyra1_4_5.py "12" "4" "+" "2" "*" --> 32 (ok)
 #python3 alyra1_4_5.py "12" --> 12 (ok)
-#python3 alyra1_4_5.py 	"3" "4" "1" "2" "+" "*" "+" --> 15 (ok)
+#python3 alyra1_4_5.py "3" "4" "1" "2" "+" "*" "+" --> 15 (ok)
 import sys
 
 
