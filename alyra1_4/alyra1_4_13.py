@@ -1,6 +1,6 @@
 #champ bit 0x173218a5
 #représente 0000000000000000003218a50000000000000000000000000000000000000000
-#cible : 256 bits = 32 octets = 16
+#cible : 256 bits = 32 octets
 
 
 def cibleAtteinte(coefficient, exposant, hash):
