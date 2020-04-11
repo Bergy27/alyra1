@@ -5,6 +5,7 @@
 CIBLE_MAX = ((2**16-1)*2**208)
 
 def cibleToDifficulte(cible):
+	print(cible)
 	return CIBLE_MAX/cible
 
 def calculerDifficulte(bits):
@@ -13,5 +14,6 @@ def calculerDifficulte(bits):
 	return cibleToDifficulte(int(coeff,16)*2**(8*(int(exp,16)-3)))
 
 
-print(calculerDifficulte("0x1c0ae493"))
-print(calculerDifficulte("0x03000001"))
+#print(calculerDifficulte("0x1c0ae493"))
+#print(calculerDifficulte("0x03000001"))
+print(calculerDifficulte("0x1800d0f6"))

@@ -1,0 +1,87 @@
+https://www.blockchain.com/fr/api/blockchain_api
+Single Block 
+	https://blockchain.info/rawblock/$block_hash 
+	?format=hex
+	https://blockchain.info/rawblock/$block_hash?format=hex
+
+Single Transaction
+	https://blockchain.info/rawtx/$tx_hash
+	?format=hex
+	https://blockchain.info/rawtx/2004dac5fb150bd477b958491892729d90c9d50bf561382ac4e4c23aad18480e?format=hex
+
+
+https://www.blockchain.com/btc/block/497152
+
+
+https://blockchain.info/rawtx/2004dac5fb150bd477b958491892729d90c9d50bf561382ac4e4c23aad18480e?format=hex
+
+	
+
+***version
+00000020
+
+***previous block (little)
+a15e218f5f158a31053ea101b917a6113c807f6bcdc85a000000000000000000
+
+
+
+***merkle (little)
+cc7cf9eab23c2eae050377375666cd7862c1dfeb81abd3198c3a3f8e045d9148
+
+
+
+***timestamp (little)
+4a39225a ==> 5a22394a ==> 1512192330 ==> 2/12/2017 à 5:25:30
+
+
+
+***Bits (little) : alyra 2_1_2
+f6d00018
+exp = 0x18 = 24
+coeff = 0x00d0f6 = 53494
+cible=cible_max/cible==> 1'347'001'430'558.5703
+Diff ==> 1 347 001 430 558,57
+BITS ==> 402 706 678
+402706678
+
+
+***Nonce (little)
+659e5e8a
+
+***Transactions : alyra 1_4_3 + 1_4_4
+
+	VarInt : nombre de transactions
+	01
+	Version : 4 octets
+	01000000
+
+	Varint nombre d'entrées : 01
+
+	hash transaction passé
+	0000000000000000000000000000000000000000000000000000000000000000
+
+	index sortie
+	ffffffff
+
+	taille scriptsig (varint) : 64 (100)
+
+	script
+	030096072cfabe6d6d08d1c2f6d904f4e1cd10c6558f8e5aed5d6a89c43bb22862464ebb819dd8813404000000f09f909f104d696e6564206279206a6f73656d737200000000000000000000000000000000000000000000000000000000000000000000
+
+	séquence (little)
+	7f060000
+
+	VarInt : nombre de sorties
+	01
+
+	montant (little) ==> 1250000000 satoshis
+	807c814a0000 0000
+
+	taille du script
+	19
+
+	script (out)
+	76a914c825a1ecf2a6830c4401620c3a16f1995057c2ab88ac
+
+	locktime (little)
+	efebcf38
