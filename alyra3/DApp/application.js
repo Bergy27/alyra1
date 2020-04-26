@@ -1,82 +1,119 @@
 let CONTRACT_ABI = [
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "dev",
-        "type": "bytes32"
-      }
-    ],
-    "name": "remettre",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "cred",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "dd",
-        "type": "string"
-      }
-    ],
-    "name": "produireHash",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "destinataire",
-        "type": "address"
-      },
-      {
-        "name": "valeur",
-        "type": "uint256"
-      }
-    ],
-    "name": "transfer",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  }
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "student",
+				"type": "address"
+			}
+		],
+		"name": "Remise",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "cred",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "hashs",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "url",
+				"type": "string"
+			}
+		],
+		"name": "produireHash",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "dev",
+				"type": "bytes32"
+			}
+		],
+		"name": "remettre",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "destinataire",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "valeur",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
 ]
-//let CONTRACT_ADDRESS = "0xfC3a6fE7B67679CCbACa927e4E30952F44553d55";
-let CONTRACT_ADDRESS = "0x451875bdd0e524882550ec1ce52bcc4d0ff90eae";
+let CONTRACT_ADDRESS = "0xeD508Fc6d77D9b937586cD242f4A80a8B687f1C8";
 
 async function createMetaMaskDapp() {
 	try {
@@ -115,7 +152,8 @@ async function blockNumber() {
 }
 
 async function gasPrice() {
-	if (typeof dapp === "undefined") { await createMetaMaskDapp(); }
+	//if (typeof dapp === "undefined") { await createMetaMaskDapp(); }
+	dapp = await createMetaMaskDapp();
 	dapp.provider.getGasPrice(dapp.address).then((gasPrice) => {
 		let etherString = ethers.utils.formatEther(gasPrice);
 		console.log("Prix du gaz: " + etherString);
@@ -132,15 +170,17 @@ async function credibilite() {
 	document.getElementById("credibilite").innerHTML = "Ma crédibilité est de : "+maCredibilite;
 }
 
-async function rendreDevoir(url) {
+async function rendreDevoir() {
 	if (typeof dapp === "undefined") { await createMetaMaskDapp(); }
+	var url = document.getElementById("url").value;
+	console.log(url);
 	let contratCredibilite = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, dapp.provider.getSigner());
-	var hashDevoir = contratCredibilite.produireHash(url);
-	hashDevoir.then(function(hash) {
-		console.log(contratCredibilite.remettre(hash));
-		credibilite();
-	})
-	//credibilite();
-	//console.log(hashDevoir.then);
-	//remettre
+	var hash = await contratCredibilite.produireHash(url);
+	let rank = await contratCredibilite.remettre(hash);
+
+	contratCredibilite.on('Remise', (hash, student) => {
+		console.log(hash);
+		console.log(student);
+	});
+	console.log("Le devoir #" + rank + "a été remis");
 }

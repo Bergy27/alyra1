@@ -11,12 +11,19 @@
 
  		<h1>Titre de la première DApp</h1>
  		<div>
- 		<button onclick="createMetaMaskDapp()">Connect to MetaMask</button>
- 		<button onclick="blockNumber()">Calculate last block</button>
- 		<button onclick="gasPrice()">Calculate price of gas</button>
- 		<button onclick="credibilite()">Calculate credibilite</button>
- 		<button onclick="rendreDevoir('http://www.monjolidevoir.com')">Rendre un devoir</button>
+ 			<button onclick="createMetaMaskDapp()">Connect to MetaMask</button>
  		</div>
+ 		<div>
+ 			<button onclick="blockNumber()">Calculate last block</button>
+ 			<button onclick="gasPrice()">Calculate price of gas</button>
+ 			<button onclick="credibilite()">Calculate credibilite</button>
+ 		</div>
+ 		<form onsubmit="return false;" method="post" name="myForm">
+ 			<label for="url">Enter url of the homework: </label>
+ 			<input type="text" name="url" id="url" required>
+ 			<input type="submit" name="submit" onclick="rendreDevoir()" value="Rendre un devoir">
+ 			
+ 		</form>
 
  		<div id="balance"></div>
 
