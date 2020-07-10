@@ -7,7 +7,24 @@
 			<script src="app.js"></script>
 		</head>
 
-		<button onclick="ping()">Ping 10 first pairs</button>
+
+		<form id="form1">
+		  Chaîne de caractères à envoyer sur IPFS : <input required type="text" name="chaine" id="chaine"><br>
+		  <input type="button" onclick="sendStr()" value="Submit">
+		</form>
+		</br>
+
+		<form id="form2">
+		  Récupérer l'objet correspondant au hash : <input required type="text" name="hash" id="hash"><br>
+		  <input type="button" onclick="getStr()" value="Submit">
+		</form>
+		<div id="result"></div>
+		</br>
+
+		<div>
+			<button onclick="ping()">Ping 10 first pairs</button>
+		</div>
+
 		<div id="list">
 		</div>
 

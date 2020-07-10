@@ -1,3 +1,5 @@
+const ipfs = window.IpfsHttpClient('localhost', '5001');
+
 
 function showList(list) {
 	list += "</ul>"
@@ -5,7 +7,6 @@ function showList(list) {
 }
 
 function ping() {
-	const ipfs = window.IpfsHttpClient('localhost', '5001');
 	let ctr = 0;
 	ipfs.swarm.addrs().then(function(addresses) {
 		let list = "<ul>"
@@ -25,5 +26,19 @@ function ping() {
 				console.log(error);
 			})
 		})
+	})
+}
+
+function sendStr() {
+	const ipfs = window.IpfsHttpClient('localhost', '5001');
+	ipfs.add(new ipfs.types.Buffer.from(document.getElementById("chaine").value)).then(function(result) {
+		console.log(result);
+	})
+
+}
+
+function getStr() {
+	ipfs.get(document.getElementById("hash").value).then(function(result) {
+		document.getElementById("result").innerHTML = result[0].content.toString();
 	})
 }
