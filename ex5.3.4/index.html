@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Exercice 5.3.4 : Bastien Berger</title>
+		
+	</head>
+
+
+	<body onload="init()">
+
+		<form id="add">
+			<label for="carte">Ajouter une nouvelle carte</label>
+			<input type="file" id="carte" name="carte" accept="image/png, image/jpeg"></br>
+			<input type="button" onclick="ajouterCarte()" value="Submit">
+		</form>
+		</br>
+		<div id="cartes">
+		</div>
+
+		<script src="https://unpkg.com/ipfs-http-client@29.1.1/dist/index.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+		<script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="text/javascript"></script>
+		<script src="app.js"></script>
+
+		
+	</body>
+</html>

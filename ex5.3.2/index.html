@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		<head>
+			<script src="https://unpkg.com/ipfs-http-client@29.1.1/dist/index.min.js"></script>
+			<script src="app.js"></script>
+		</head>
+
+
+		<form id="form1">
+		  Chaîne de caractères à envoyer sur IPFS : <input required type="text" name="chaine" id="chaine"><br>
+		  <input type="button" onclick="sendStr()" value="Submit">
+		</form>
+		</br>
+
+		<form id="form2">
+		  Récupérer l'objet correspondant au hash : <input required type="text" name="hash" id="hash"><br>
+		  <input type="button" onclick="getStr()" value="Submit">
+		</form>
+		<div id="result"></div>
+		</br>
+
+		<div>
+			<button onclick="ping()">Ping 10 first pairs</button>
+		</div>
+
+		<div id="list">
+		</div>
+
+	</body>
+</html>
