@@ -1,0 +1,21 @@
+de nouveau beaucoup de choses pas très bien expliquées ou alors on doit chercher beaucoup d'informations à côté pour pouvoir faire les exercices c'est vraiment dommage et je ne suis pas sur que ce soit voulu
+
+
+Initialiser un projet react 
+
+$ npm create-react-app react-tutorial
+
+
+curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":3}' http://localhost:8545
+
+curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://localhost:8545
+
+curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00a329c0648769a73afac7f9381e08fb43dbea72"],"id":4}' http://localhost:8545
+
+parity --chain dev account list
+
+
+parity --chain dev  --jsonrpc-cors "http://remix.ethereum.org"
+
+
+
